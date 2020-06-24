@@ -3,8 +3,8 @@ module Api::V1
     before_action :find_contact, only: [:show, :update]
 
     def index
-      @contacts = Contact.all.filters(params.fetch(:filter, {})).order(updated_at: :desc).with_attached_avatar.page(params[:page])
-      render json: @contacts, include: [:name, :email, :avatar, :created_at, :updated_at]
+      @contacts = Contact.all.filters(params).order(updated_at: :desc).with_attached_avatar.page(params[:page])
+      render json: @contacts, include: [:name, :email, :avatar_url, :created_at, :updated_at]
     end
 
     def show

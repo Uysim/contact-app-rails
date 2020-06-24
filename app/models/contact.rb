@@ -1,4 +1,5 @@
 class Contact < ApplicationRecord
+  paginates_per 500
   has_one_attached :avatar
 
   validates :name, :email, presence: true
